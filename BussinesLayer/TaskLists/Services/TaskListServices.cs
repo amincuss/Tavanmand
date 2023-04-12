@@ -125,10 +125,20 @@ namespace BussinesLayer.TaskLists.Services
             try
             {
 
-                var loads = (from p in _tavanmandContext.TaskList join q in _tavanmandContext.TaskMode on p.TaskModeId
-
-
-                         equals q.TaskModeId join t in _tavanmandContext.TaskCategory on p.TaskCategoryId equals t.TaskCategortId select new {CategoryName= t.CategoryName,TaskName=p.Title,TaskMode=q.Title}) ;
+                var loads = (from p in _tavanmandContext.TaskList 
+                             join q in _tavanmandContext.TaskMode
+                             
+                             on p.TaskModeId
+                             equals q.TaskModeId 
+                             join t in _tavanmandContext.TaskCategory 
+                             on p.TaskCategoryId
+                             equals t.TaskCategortId 
+                             select new
+                             {
+                                 CategoryName= t.CategoryName,
+                                 TaskName=p.Title,
+                                 TaskMode=q.Title
+                             });
                            
 
                
