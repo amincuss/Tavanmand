@@ -10,8 +10,7 @@ namespace BussinesLayer.TaskLists.Contracts
 {
    public interface ITaskListService
     {
-
-        Task<List<TaskListDto>> GetAllTasks();
+        IQueryable GetAllTasks();
         Task<List<TaskListDto>> GetTaskListByTaskModeId(int taskModeId);
 
         TaskListDto GetTaskListById(int id);

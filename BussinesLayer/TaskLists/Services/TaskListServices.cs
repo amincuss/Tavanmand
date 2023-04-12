@@ -120,22 +120,20 @@ namespace BussinesLayer.TaskLists.Services
           
         }
 
-        public async Task<List<TaskListDto>> GetAllTasks()
+        public IQueryable GetAllTasks()
         {
             try
             {
-                var load = await _tavanmandContext.TaskList.Where(x=>x.Active==true && x.IsDeleted==false).Select(x=>
-                new TaskListDto
-                {
-                    TaskListId=x.TaskListId, 
-                    TaskCategoryId= x.TaskCategoryId,
-                    TaskModeId=x.TaskModeId,
-                    Title=x.Title,
-                    CreateDate=x.CreateDate
-                })
-               .ToListAsync();
+
+                var loads = (from p in _tavanmandContext.TaskList join q in _tavanmandContext.TaskMode on p.TaskModeId
+
+
+                         equals q.TaskModeId join t in _tavanmandContext.TaskCategory on p.TaskCategoryId equals t.TaskCategortId select new {CategoryName= t.CategoryName,TaskName=p.Title,TaskMode=q.Title}) ;
+                           
+
+               
                  
-                return load;
+                return loads.AsQueryable();
 
             }
             catch(Exception )

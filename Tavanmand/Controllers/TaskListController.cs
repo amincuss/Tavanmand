@@ -18,10 +18,10 @@ namespace WebApi.Controllers
 
         }
         [HttpGet("GetAllTask")]
-        public async Task<IActionResult> getAllTask()
+        public IActionResult getAllTask()
         {
 
-            var load = await _taskListService.GetAllTasks();
+            var load = _taskListService.GetAllTasks();
 
             return Ok(load);
 
