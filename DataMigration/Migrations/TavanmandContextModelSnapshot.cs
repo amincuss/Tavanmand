@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace WebApplication1.Migrations
+namespace DataMigration.Migrations
 {
     [DbContext(typeof(TavanmandContext))]
     partial class TavanmandContextModelSnapshot : ModelSnapshot

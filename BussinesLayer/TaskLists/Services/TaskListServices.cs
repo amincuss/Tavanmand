@@ -137,7 +137,8 @@ namespace BussinesLayer.TaskLists.Services
                              {
                                  CategoryName= t.CategoryName,
                                  TaskName=p.Title,
-                                 TaskMode=q.Title
+                                 TaskMode=q.Title,
+                                 CreateDate=p.CreateDate
                              });
                            
 
