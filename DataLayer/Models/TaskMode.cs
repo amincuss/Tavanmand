@@ -19,7 +19,8 @@ public partial class TaskMode
 
     public bool IsDeleted { get; set; }
 
-    public bool Active { get; set; }
+    [Required]
+    public bool? Active { get; set; }
 
     [InverseProperty("TaskMode")]
     public virtual ICollection<TaskList> TaskList { get; } = new List<TaskList>();

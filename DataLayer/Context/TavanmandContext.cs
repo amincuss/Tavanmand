@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataLayer.Models;
@@ -19,5 +20,32 @@ public partial class TavanmandContext : DbContext
 
     public virtual DbSet<TaskMode> TaskMode { get; set; }
 
-  
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<TaskMode>()
+                     .HasData(
+                       new TaskMode {  Active=true, IsDeleted=false, TaskModeId=1 ,Title="New" },
+                        new TaskMode { Active = true, IsDeleted = false, TaskModeId = 2, Title = "Active" },
+                        new TaskMode { Active = true, IsDeleted = false, TaskModeId = 3, Title = "Done" },
+                       new TaskMode { Active = true, IsDeleted = false, TaskModeId = 4, Title = "Result" }
+                      
+                     );
+        modelBuilder.Entity<TaskCategory>()
+                 .HasData(
+                   new TaskCategory { Active = true, IsDeleted = false, CategoryName="Backend", TaskCategortId = 1 },
+                    new TaskCategory { Active = true, IsDeleted = false, CategoryName = "front", TaskCategortId = 2 },
+                    new TaskCategory { Active = true, IsDeleted = false, CategoryName = "database", TaskCategortId = 3 },
+                   new TaskCategory { Active = true, IsDeleted = false, CategoryName = "mongo", TaskCategortId = 4 }
+
+                 );
+        modelBuilder.Entity<TaskList>()
+                  .HasData(
+                    new TaskList { TaskListId=1, Active = true, IsDeleted = false, TaskModeId = 1, Title = "create database",TaskCategoryId=1 },
+                     new TaskList { TaskListId = 2,Active = true, IsDeleted = false, TaskModeId = 2, Title = "Add Admin", TaskCategoryId = 2 },
+                     new TaskList { TaskListId = 3, Active = true, IsDeleted = false, TaskModeId = 3, Title = "Jwt auth" ,TaskCategoryId = 3 },
+                    new TaskList { TaskListId = 4, Active = true, IsDeleted = false, TaskModeId = 4, Title = "Set Guest", TaskCategoryId = 4 }
+
+                  );
+    }
+
 }

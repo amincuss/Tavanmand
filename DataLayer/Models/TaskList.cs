@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataLayer.Models;
 
-public class TaskList
+public partial class TaskList
 {
     [Key]
     public int TaskListId { get; set; }
@@ -23,8 +23,9 @@ public class TaskList
     [StringLength(50)]
     public string Title { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
+    [Required]
     public bool? Active { get; set; }
 
     [ForeignKey("TaskCategoryId")]

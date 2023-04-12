@@ -20,7 +20,7 @@ namespace DataLayer.ModelsDto
       
         public string Title { get; set; }
 
-        public bool? IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
 
         public bool? Active { get; set; }
     }
